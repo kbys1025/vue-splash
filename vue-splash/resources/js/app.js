@@ -7,6 +7,11 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// ルーティングの定義をインポートする
+import router from './router'
+// ルートコンポーネントをインポートする
+import App from './App.vue'
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,4 +34,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    router, // ルーティングの定義を読み込む
+    components: { App }, // ルートコンポーネントの使用を宣言する
+    template: '<App />' // ルートコンポーネントを描画する
 });
