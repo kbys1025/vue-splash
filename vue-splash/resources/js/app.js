@@ -33,11 +33,16 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+const createApp = async () => {
+    await store.dispatch('auth/currentUser')
+  
+    const app = new Vue({
+        el: '#app',
+        router, // ルーティングの定義を読み込む
+        store,
+        components: { App }, // ルートコンポーネントの使用を宣言する
+        template: '<App />' // ルートコンポーネントを描画する
+    });
+}
 
-const app = new Vue({
-    el: '#app',
-    router, // ルーティングの定義を読み込む
-    store,
-    components: { App }, // ルートコンポーネントの使用を宣言する
-    template: '<App />' // ルートコンポーネントを描画する
-});
+createApp()
